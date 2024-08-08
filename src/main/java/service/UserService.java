@@ -15,6 +15,20 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> getAllUsers() {
+
+        return UserRepository.findAll();
+    }
+
+    public Optional<User> getUserById(Long id) {
+        return UserRepository.findById(id);
+    }
+
+    public User createUser(User user) {
+        return UserRepository.save(user);
+    }
+
+    public User updateUser(Long id, User userDetails) {
+        User User = UserRepository.findById(id).orElseThrow();
         return userRepository.findAll();
     }
 
@@ -40,3 +54,5 @@ public class UserService {
         userRepository.deleteById(id);
     }
 }
+
+
