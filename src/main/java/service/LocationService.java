@@ -1,6 +1,5 @@
 package service;
 
-
 import model.Location;
 import repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;

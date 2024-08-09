@@ -1,6 +1,5 @@
 package service;
 
-
 import model.Booking;
 import repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,21 @@
 package service;
+<<<<<<< HEAD
 
 
 import model.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import repository.ServiceRepository;
 
+import model.Service; // Import the correct model class
+import repository.ServiceRepository; // Import the correct repository interface
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+
 import java.util.List;
 import java.util.Optional;
 
-@Service
+// Correct annotation for a Spring service class
 public class ServiceService {
 
     @Autowired
@@ -27,7 +34,8 @@ public class ServiceService {
     }
 
     public Service updateService(Long id, Service serviceDetails) {
-        Service service = serviceRepository.findById(id).orElseThrow();
+        Service service = serviceRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Service not found"));
         service.setName(serviceDetails.getName());
         service.setDescription(serviceDetails.getDescription());
         return serviceRepository.save(service);
