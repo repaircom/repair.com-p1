@@ -1,6 +1,6 @@
 package controller;
 
-import jakarta.xml.ws.Service;
+import model.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,39 +10,36 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/services")
-public abstract class ServiceController {
+public class ServiceController {
 
     @Autowired
     private ServiceService serviceService;
 
     @GetMapping
     public List<Service> getAllServices() {
-        return ServiceService.getAllServices();
+        return serviceService.getAllServices();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Service> getServiceById(@PathVariable Long id) {
-        return ServiceService.getServiceById(id)
+        return serviceService.getServiceById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public Service createService(@RequestBody Service service) {
-        return ServiceService.createService(service);
+        return serviceService.createService(service);
     }
 
     @PutMapping("/{id}")
-    public abstract ResponseEntity<Service> updateService(@PathVariable Long id);
-
-    @PutMapping("/{id}")
-          public ResponseEntity<Service> updateService(@PathVariable Long id, @RequestBody Service serviceDetails) {
+    public ResponseEntity<Service> updateService(@PathVariable Long id, @RequestBody Service serviceDetails) {
         return ResponseEntity.ok(serviceService.updateService(id, serviceDetails));
-        }
+    }
 
-        @DeleteMapping("/{id}")
-          public ResponseEntity<Void> deleteService(@PathVariable Long id) {
-        ServiceService.deleteService(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteService(@PathVariable Long id) {
+        serviceService.deleteService(id);
         return ResponseEntity.noContent().build();
-        }
-        }
+    }
+}

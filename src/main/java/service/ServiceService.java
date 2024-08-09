@@ -1,10 +1,9 @@
 package service;
 
-<<<<<<< HEAD
+
 import model.Service;
-import repository.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import repository.ServiceRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,8 +36,5 @@ public class ServiceService {
     public void deleteService(Long id) {
         serviceRepository.deleteById(id);
     }
-=======
-public class ServiceService {
 
->>>>>>> 5c3d3e67860b67f57eb28c6691206ab4f017ec31
 }

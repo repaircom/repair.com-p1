@@ -4,6 +4,8 @@ package model;
 import jakarta.persistence.*;
 import model.Location;
 
+import org.springframework.stereotype.Service;
+
 
 
 @Entity
