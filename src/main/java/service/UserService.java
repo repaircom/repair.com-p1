@@ -15,20 +15,6 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> getAllUsers() {
-
-        return UserRepository.findAll();
-    }
-
-    public Optional<User> getUserById(Long id) {
-        return UserRepository.findById(id);
-    }
-
-    public User createUser(User user) {
-        return UserRepository.save(user);
-    }
-
-    public User updateUser(Long id, User userDetails) {
-        User User = UserRepository.findById(id).orElseThrow();
         return userRepository.findAll();
     }
 
@@ -41,12 +27,12 @@ public class UserService {
     }
 
     public User updateUser(Long id, User userDetails) {
-        User user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         user.setName(userDetails.getName());
         user.setMobileNumber(userDetails.getMobileNumber());
         user.setEmail(userDetails.getEmail());
         user.setPassword(userDetails.getPassword());
-        user.setLocation(userDetails.getLocation());
+        user.setLocation(userDetails.getLocation()); // Adjusted to use Location type
         return userRepository.save(user);
     }
 
@@ -54,5 +40,3 @@ public class UserService {
         userRepository.deleteById(id);
     }
 }
-
-

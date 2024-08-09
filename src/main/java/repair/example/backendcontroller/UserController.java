@@ -1,8 +1,9 @@
-package repair.example.backendcontroller;
+package repair.example.backendcontroller; // Ensure this is the correct package
 
-import com.yourcompany.yourproject.model.User;
-import com.yourcompany.yourproject.service.UserService;
+import model.User; // Adjust the package to match your actual package for User class
+import service.UserService; // Adjust the package to match your actual package for UserService class
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus; // Import HttpStatus
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +29,15 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        return ResponseEntity.ok(userService.updateUser(id, userDetails));
+        User updatedUser = userService.updateUser(id, userDetails);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/{id}")
