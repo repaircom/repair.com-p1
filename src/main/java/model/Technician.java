@@ -1,14 +1,10 @@
 package model;
 
 import jakarta.persistence.*;
-
-import model.Location;
-
-import org.springframework.stereotype.Service;
-
-
-
+import lombok.*;
+@Data
 @Entity
+@Table(name="Technician")
 public class Technician {
 
     @Id

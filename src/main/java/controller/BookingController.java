@@ -27,7 +27,7 @@ public class BookingController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public Booking createBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);
     }

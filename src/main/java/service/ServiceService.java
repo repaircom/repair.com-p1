@@ -1,21 +1,14 @@
 package service;
 
-
-
 import model.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+ // Make sure this is the correct import
 import repository.ServiceRepository;
-
-import model.Service; // Import the correct model class
-import repository.ServiceRepository; // Import the correct repository interface
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 
 import java.util.List;
 import java.util.Optional;
 
-// Correct annotation for a Spring service class
+@org.springframework.stereotype.Service // Annotate your class to specify that it's a service component
 public class ServiceService {
 
     @Autowired
@@ -44,5 +37,4 @@ public class ServiceService {
     public void deleteService(Long id) {
         serviceRepository.deleteById(id);
     }
-
 }

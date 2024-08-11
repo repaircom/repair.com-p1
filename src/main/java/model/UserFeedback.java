@@ -1,8 +1,11 @@
 package model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Data
 @Entity
+@Table(name="UserFeedback")
 public class UserFeedback {
 
     @Id
