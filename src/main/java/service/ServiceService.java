@@ -1,5 +1,5 @@
 package service;
-<<<<<<< HEAD
+
 
 
 import model.Service;

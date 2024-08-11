@@ -1,10 +1,6 @@
 package controller;
 
-
 import model.Service;
-
-import model.Service; // Make sure this import matches the correct Service class
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +17,9 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @GetMapping
-
-    public List<Service> getAllServices() {
-        return serviceService.getAllServices();
-
     public ResponseEntity<List<Service>> getAllServices() {
         List<Service> services = serviceService.getAllServices();
         return ResponseEntity.ok(services);
-
     }
 
     @GetMapping("/{id}")
@@ -39,24 +30,15 @@ public class ServiceController {
     }
 
     @PostMapping
-
-    public Service createService(@RequestBody Service service) {
-        return serviceService.createService(service);
-
     public ResponseEntity<Service> createService(@RequestBody Service service) {
         Service createdService = serviceService.createService(service);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdService);
-
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Service> updateService(@PathVariable Long id, @RequestBody Service serviceDetails) {
-
-        return ResponseEntity.ok(serviceService.updateService(id, serviceDetails));
-
         Service updatedService = serviceService.updateService(id, serviceDetails);
         return ResponseEntity.ok(updatedService);
-
     }
 
     @DeleteMapping("/{id}")
